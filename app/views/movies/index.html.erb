@@ -1,2 +1,21 @@
 <h1>Movies#index</h1>
 <p>Find me in app/views/movies/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>上映映画一覧</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <% @movies.each do |movie|%>
+        <div>
+            <li>
+                <p><%=movie.name%></p>
+                <p><%=movie.year%></p>
+                <p><%=movie.description%></p>
+                <p><%=movie.image_url%></p>
+                <p><%=movie.is_showing%></p>
+            </li>
+        </div>
+    </body>
+</html>
