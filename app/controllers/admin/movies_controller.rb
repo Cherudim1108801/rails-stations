@@ -1,5 +1,5 @@
 class Admin::MoviesController < ApplicationController
-  def adminmovie
+  def index
     @movies = Movie.all
   end
 end
