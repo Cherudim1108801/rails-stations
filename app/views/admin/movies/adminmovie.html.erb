@@ -26,8 +26,10 @@
                 <th><%=movie.name%></th>
                 <th><%=movie.year%></th>
                 <th><%=movie.description%></th>
-                <th><%=movie.image_url%></th>
-                <th><%=movie.is_showing%></th>
+                <th>
+                    <a href=<%=movie.image_url%>>画像</a>
+                </th>
+                <th><%=movie.is_showing ? "上映中" : "上映予定"%></th>
                 <th><%=movie.created_at%></th>
                 <th><%=movie.updated_at%></th>
             </tr>
