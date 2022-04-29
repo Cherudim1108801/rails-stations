@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get "/movies", to: "movies#index"
 
   get "/admin/movies", to: "admin/movies#adminindex"
+
+  get "/admin/movies/new", to: "admin/movies#new"
 end
