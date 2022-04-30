@@ -11,10 +11,10 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to admin_movies_path
+      redirect_to admin_movies_new_path
     else
       flash[:alert] = "エラー"
-      redirect_to adomin_movies_new_path
+      render :new, status: :unprocessable_entity
     end
   end
 
