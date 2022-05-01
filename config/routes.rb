@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/movies", to: "movies#index"
 
   get "/admin/movies", to: "admin/movies#adminindex"
-  post "/admin/movies", to: "admin/movies#create"
+  post "/admin/movies/new", to: "admin/movies#create"
 
   get "/admin/movies/new", to: "admin/movies#new"
 end
