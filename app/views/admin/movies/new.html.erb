@@ -1,6 +1,6 @@
 <h1>新規の映画を追加</h1>
 
-<%= form_with model: @movie do |form| %>
+<%= form_with model: [:admin, @movie] do |form| %>
     <div>
         <%= form.label :id, "ID" %><%= form.number_field :id %><br>
         <%= form.label :name, "タイトル" %><%= form.text_field :name %><br>
