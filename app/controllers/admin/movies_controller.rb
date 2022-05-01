@@ -11,7 +11,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.valid?
-      redirect_to "/admin/movies/"
+      redirect_to "/admin/movies"
     else
       flash[:alert] = "エラー"
       render :new
