@@ -4,11 +4,11 @@ class Admin::MoviesController < ApplicationController
   end
 
   def new
-    @movie = Movie.new
+    @movie = Admin::Movie.new
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    @movie = Admin::Movie.new(movie_params)
 
     if @movie.valid?
       redirect_to "/admin/movies/"
