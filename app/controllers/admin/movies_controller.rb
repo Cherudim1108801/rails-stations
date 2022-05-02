@@ -22,5 +22,4 @@ class Admin::MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:id, :name, :year, :description, :image_url, :is_showing, :created_at, :updated_at)
     end
-
 end
