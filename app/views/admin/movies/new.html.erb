@@ -1,0 +1,15 @@
+<h1>新規の映画を追加</h1>
+
+<%= form_with model: @movie do |form| %>
+    <div>
+        <%= form.label :id, "ID" %><%= form.number_field :id %><br>
+        <%= form.label :name, "タイトル" %><%= form.text_field :name %><br>
+        <%= form.label :year, "公開年" %><%= form.text_field :year %><br>
+        <%= form.label :description, "概要" %><%= form.text_area :description %><br>
+        <%= form.label :image_url, "画像URL" %><%= form.text_field :image_url %><br>
+        <%= form.check_box :is_showing %><%= form.label :is_showing, "上映中" %><br>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
