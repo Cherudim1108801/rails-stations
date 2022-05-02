@@ -10,7 +10,7 @@ class Admin::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
-    if @movie.valid?
+    if @movie.save
       redirect_to "/admin/movies"
     else
       flash[:alert] = "エラー"
