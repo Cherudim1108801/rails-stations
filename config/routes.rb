@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get "/admin/movies", to: "admin/movies#index"
 
   get "/admin/movies/new", to: "admin/movies#new"
-  post "/admin/movies", to: "admin/movies#create"
+  post "/movies", to: "admin/movies#create"
 
 end
