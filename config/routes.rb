@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get "/movies", to: "movies#list"
 
   namespace :admin do
-    resources :movie
+    get "/movies", to: "movie#index"
+
+    get "/movies/new", to: "movie#new"
+    post "/movies", to: "movie#create"
   end
 
 end
