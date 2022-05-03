@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get "/admin/movies/new", to: "admin/movies#new"
   post "/movies", to: "admin/movies#create"
 
+  get "/admin/movies/:id", to: "admin/movies#edit"
+
 end
