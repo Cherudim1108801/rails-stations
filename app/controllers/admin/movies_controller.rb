@@ -13,7 +13,7 @@ class Admin::MoviesController < ApplicationController
     if @movie.save
       redirect_to "/admin/movies"
     else
-      flash[:alert] = "エラー"
+      flash.now[:alert] = "エラー"
       render :new
     end
   end
@@ -28,9 +28,18 @@ class Admin::MoviesController < ApplicationController
     if @movie.save
       redirect_to "/admin/movies"
     else
-      flash[:alert] = "エラー"
+      flash.now[:alert] = "エラー"
       render :edit
     end
+  end
+
+  def destroy
+    @movie = Movie.find(movie_params[:id])
+    @movie.destroy
+
+    flash[:success] = "削除が完了しました"
+    redirect_to "/admin/movies"
+
   end
 
   private
