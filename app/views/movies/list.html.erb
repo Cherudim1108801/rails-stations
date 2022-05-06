@@ -5,17 +5,36 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <% @movies.each do |movie|%>
+        <h1>上映映画一覧</h1>
         <div>
-            <li>
-                <p><%=movie.id%></p>
-                <p><%=movie.name%></p>
-                <p><%=movie.year%></p>
-                <p><%=movie.description%></p>
-                <p><%=movie.image_url%></p>
-                <p><%=movie.is_showing%></p>
-            </li>
+            <%= form_with url: search_path, method: :get do |form|%>
+                <%= form.label :keyword, "キーワード"%><%= form.text_field :keyword, value: @keyword %><br>
+                <%= form.radio_button :is_showing, "" %><%= form.label :is_showing, "すべて"%>
+                <%= form.radio_button :is_showing, "0" %><%= form.label :is_showing, "公開予定"%>
+                <%= form.radio_button :is_showing, "1" %><%= form.label :is_showing, "公開中"%><br>
+                <%= form.submit "検索" %>
+            <% end %>
         </div>
-        <% end %>
+        <br>
+        <div>
+            <table>
+                <tr>
+                    <th>タイトル</th>
+                    <th>公開年</th>
+                    <th>概要</th>
+                    <th>画像</th>
+                    <th>上映</th>
+                </tr>
+                <% @movies.each do |movie|%>
+                <tr>
+                    <td><%=movie.name%></td>
+                    <td><%=movie.year%></td>
+                    <td><%=movie.description%></td>
+                    <td><%= image_tag movie.image_url %></td>
+                    <td><%=movie.is_showing ? "上映中" : "上映予定" %></td>
+                </tr>
+            <% end %>
+            </table>
+        </div>
     </body>
 </html>
