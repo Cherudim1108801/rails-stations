@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>上映映画座席表</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <table>
+                <tr>
+                    <td>.</td>
+                    <td>.</td>
+                    <td>スクリーン</td>
+                    <td>.</td>
+                    <td>.</td>
+                </tr>
+                <% @sheets.each do |sheet|%>
+                    <% sheet.row.each do |row|%>
+                    <tr>
+                        <% sheet.column.each do |column|%>
+                            <td><%=row%>-<%=column%></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            <% end %>
+            </table>
+        </div>
+    </body>
+</html>
