@@ -22,13 +22,9 @@
                     <td>:-:</td>
                 </tr>
                 <% @sheets.each do |sheet|%>
-                    <% sheet.row.each do |row|%>
                     <tr>
-                        <% sheet.column.each do |column|%>
-                            <td>|<%=row%>-<%=column%>|</td>
-                        <% end %>
+                        <td>|<%=sheet.row%>-<%=sheet.column%>|</td>
                     </tr>
-                <% end %>
             <% end %>
             </table>
         </div>
