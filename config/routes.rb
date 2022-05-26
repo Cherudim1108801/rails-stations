@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :movies
   end
 
-  get '/sheet', to: "sheets#sheet"
+  get '/sheets', to: "sheets#sheets"
 
 end
