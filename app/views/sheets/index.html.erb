@@ -22,10 +22,14 @@
                     <td>:-:</td>
                 </tr>
                 <% @sheets.each do |sheet|%>
-                    <tr>
+                    <%if sheet.id == 1 or sheet.id == 6 or sheet.id == 11 then%>
+                        <tr>
+                    <%end%>
                         <td>|<%=sheet.row%>-<%=sheet.column%>|</td>
+                    <%if sheet.id == 5 or sheet.id == 10 or sheet.id == 15 then%>
                     </tr>
-            <% end %>
+                    <%end%>
+                <% end %>
             </table>
         </div>
     </body>
