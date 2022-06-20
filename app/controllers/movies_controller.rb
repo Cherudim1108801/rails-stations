@@ -21,4 +21,9 @@ class MoviesController < ApplicationController
     @keyword = params[:keyword]
     render :list
   end
+
+  def id
+    @movie = Movie.find(movie_params[:id])
+    @schedules = Schedule.find(movie_params[:id])
+  end
 end

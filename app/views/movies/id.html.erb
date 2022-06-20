@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>上映映画情報</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>上映映画情報</h1>
+        <div>
+            <table>
+                <tr>
+                    <th>タイトル</th>
+                    <th>公開年</th>
+                    <th>概要</th>
+                    <th>画像</th>
+                    <th>上映</th>
+                </tr>
+                <tr>
+                    <td><%=@movie.name%></td>
+                    <td><%=@movie.year%></td>
+                    <td><%=@movie.description%></td>
+                    <td><%= image_tag @movie.image_url %></td>
+                    <td><%=@movie.is_showing ? "上映中" : "上映予定" %></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+
