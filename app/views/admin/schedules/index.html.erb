@@ -6,6 +6,9 @@
     </head>
     <body>
         <h1>上映映画スケジュール一覧</h1>
+        <div>
+            <%= button_to "新規", admin_schedule_path(@schedule), method: :new %>
+        </div>
         <table>
             <tr>
                 <th>ID</th>
