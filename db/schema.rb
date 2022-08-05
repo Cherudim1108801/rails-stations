@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 2022_08_02_134711) do
   end
 
   create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "movies_id"
-    t.datetime "start_time", comment: "上映開始時刻"
-    t.datetime "end_time", comment: "上映終了時刻"
+    t.bigint "movie_id"
+    t.time "start_time", comment: "上映開始時刻"
+    t.time "end_time", comment: "上映終了時刻"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["movies_id"], name: "index_schedules_on_movies_id"
+    t.index ["movie_id"], name: "index_schedules_on_movie_id"
   end
 
   create_table "sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -38,5 +38,5 @@ ActiveRecord::Schema.define(version: 2022_08_02_134711) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "schedules", "movies", column: "movies_id"
+  add_foreign_key "schedules", "movies"
 end

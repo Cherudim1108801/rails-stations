@@ -23,7 +23,17 @@
                     <td><%=@movie.is_showing ? "上映中" : "上映予定" %></td>
                 </tr>
             </table>
+            <br>
+            <table>
+                <tr>
+                    <th>上映スケジュール</th>
+                </tr>
+                <% @schedules.each do |schedule|%>
+                    <tr>
+                        <td><%=(schedule.start_time).strftime("%H:%M")%>～<%=(schedule.end_time).strftime("%H:%M")%></td>
+                    </tr>
+                <% end %>
+            </table>
         </div>
     </body>
 </html>
-

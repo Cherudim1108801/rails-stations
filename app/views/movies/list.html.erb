@@ -19,6 +19,7 @@
         <div>
             <table>
                 <tr>
+                    <th>No.</th>
                     <th>タイトル</th>
                     <th>公開年</th>
                     <th>概要</th>
@@ -27,6 +28,7 @@
                 </tr>
                 <% @movies.each do |movie|%>
                 <tr>
+                    <td><a href="/movies/<%=movie.id%>"><%=movie.id%></a></td>
                     <td><%=movie.name%></td>
                     <td><%=movie.year%></td>
                     <td><%=movie.description%></td>
