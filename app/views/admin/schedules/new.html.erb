@@ -1,0 +1,12 @@
+<h1>新規の上映スケジュールを追加</h1>
+
+<%= form_with model: [ :admin, @schedule] do |form| %>
+    <div>
+        <%= form.label :movie_id, "映画ID" %><%= form.number_field :movie_id %><br>
+        <%= form.label :name, "開始時刻" %><%= form.time_field :name %><br>
+        <%= form.label :year, "終了時刻" %><%= form.time_field :year %><br>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>上映映画スケジュール一覧</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>上映映画スケジュール一覧</h1>
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>映画名</th>
+                <th>開始時刻</th>
+                <th>終了時刻</th>
+                <th>作成日時</th>
+                <th>更新日時</th>
+            <tr>
+            <% @schedules.each do |schedule|%>
+                <tr>
+                    <td><a href="/admin/schedules/<%=schedule.schedule_id%>"><%=schedule.schedule_id%></a></td>
+                    <td><%=schedule.name%></td>
+                    <td><%=(schedule.start_time).strftime("%H:%M")%></td>
+                    <td><%=(schedule.end_time).strftime("%H:%M")%></td>
+                    <td><%=schedule.created_at%></td>
+                    <td><%=schedule.updated_at%></td>
+                </tr>
+            <% end %>
+        </table>
+    </body>
+</html>

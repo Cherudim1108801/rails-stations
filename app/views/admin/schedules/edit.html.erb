@@ -1,0 +1,14 @@
+<h1>上映スケジュールの編集</h1>
+
+<%= form_with model: [ :admin, @schedule] do |form| %>
+    <div>
+        <%= form.label :name, "開始時刻" %><%= form.time_field :name %><br>
+        <%= form.label :year, "終了時刻" %><%= form.time_field :year %><br>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+    <div>
+        <%= button_to "削除", admin_schedule_path(@schedule), method: :delete, data: { confirm: "本当に削除しますか？" }%>
+    </div>
+<% end %>

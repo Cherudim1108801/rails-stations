@@ -26,10 +26,12 @@
             <br>
             <table>
                 <tr>
+                    <th>NO.<th>
                     <th>上映スケジュール</th>
                 </tr>
                 <% @schedules.each do |schedule|%>
                     <tr>
+                        <td><a href="/admin/schedules/<%=schedule.id%>"><%=schedule.id%></a></td>
                         <td><%=(schedule.start_time).strftime("%H:%M")%>～<%=(schedule.end_time).strftime("%H:%M")%></td>
                     </tr>
                 <% end %>
