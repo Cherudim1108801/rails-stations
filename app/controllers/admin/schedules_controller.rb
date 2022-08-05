@@ -11,7 +11,7 @@ class Admin::SchedulesController < ApplicationController
         @schedule = Schedule.new(schedule_params)
 
         if @schedule.save
-            redilect_to "/admin/schedules"
+            redirect_to "/admin/schedules"
         else
             flash.now[:alert] = "エラー"
             render :new
@@ -26,11 +26,19 @@ class Admin::SchedulesController < ApplicationController
         @schedule = Schedule.new(schedule_params)
 
         if @schedule.save
-            redilect_to "/admin/schedules"
+            redirect_to "/admin/schedules"
         else
             flash.now[:alert] = "エラー"
             render :new
         end
+    end
+
+    def destroy
+        @schedule = Schedule.find(schedule_params[:id])
+        @schedule.destroy
+
+        flash[:success] = "削除が完了しました"
+        redirect_to "/admin/schedules"
     end
 
     private
