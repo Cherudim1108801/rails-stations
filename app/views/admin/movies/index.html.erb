@@ -5,6 +5,12 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <h1>上映映画一覧</h1>
+        <div>
+            <%= button_to "新規", {controller: 'admin/movies', action: 'new'}, {method: :get} %>
+        </div>
+        <br>
+        <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -17,7 +23,6 @@
                 <th>更新日時</th>
             </tr>
         </thead>
-        <table>
             <% @movies.each do |movie|%>
             <tr>
                 <th><a href="/admin/movies/<%=movie.id%>/edit"><%=movie.id%></a></th>
