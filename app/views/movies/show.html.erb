@@ -1,0 +1,21 @@
+<h1>スケジュール一覧</h1>
+
+<h2>作品ID: <%= @movie.id %> / 作品名: <%= @movie.name %></h2>
+
+<%= image_tag @movie.image_url, alt: @movie.name, width: 300 %>
+
+<div>
+    <p>公開年: <%= @movie.year %></p>
+    <p>概要: <%= @movie.description %></p>
+    <p>上映中: <%= @movie.is_showing ? "上映中" : "上映予定" %></p>
+</div>
+
+<div>
+    <% @movie.schedules.each do |schedule|%>
+        <ul>
+            <li>スケジュールID: <%=schedule.id%></li>
+            <li>開始時刻: <%= schedule.start_time.strftime("%H%M") %></li>
+            <li>終了時刻: <%= schedule.end_time.strftime("%H%M") %></li>
+        </ul>
+    <% end %>
+</div>

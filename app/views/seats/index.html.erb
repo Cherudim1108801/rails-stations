@@ -1,0 +1,33 @@
+<title>上映映画座席表</title>
+<meta charset="UTF-8">
+<div>
+    <title>座席一覧</title>
+<meta charset="UTF-8">
+</div>
+<div>
+    <table border="1">
+        <tr>
+            <td>.</td>
+            <td>.</td>
+            <td>スクリーン</td>
+            <td>.</td>
+            <td>.</td>
+        </tr>
+        <tr>
+            <td>:-:</td>
+            <td>:-:</td>
+            <td>:-:</td>
+            <td>:-:</td>
+            <td>:-:</td>
+        </tr>
+        <% @seats.each do |seat|%>
+            <%if seat.id == 1 or seat.id == 6 or seat.id == 11 then%>
+                <tr>
+            <%end%>
+                <td>|<%=seat.row%>-<%=seat.column%>|</td>
+            <%if seat.id == 5 or seat.id == 10 or seat.id == 15 then%>
+            </tr>
+            <%end%>
+        <% end %>
+    </table>
+</div>
