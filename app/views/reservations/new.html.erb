@@ -1,0 +1,13 @@
+<h1>映画の座席を予約</h1>
+
+<%= form_with url: create_reservation_path, method: :post, scope: :reservation do |form| %>
+    <div>
+        <%= form.hidden_field :movie_id, value: @movie.id %><br>
+        <%= form.hidden_field :schedule_id, value: @schedule.id %><br>
+        <%= form.hidden_field :seat_id, value: @seat&.id%><br>
+        <%= form.hidden_field :date, value: @date %><br>
+        <%= form.label :name, "予約者氏名" %><%= form.text_field :name %><br>
+        <%= form.label :email, "予約者メールアドレス" %><%= form.email_field :email %><br>
+        <%= form.submit "予約する" %>
+    </div>
+<% end %>
