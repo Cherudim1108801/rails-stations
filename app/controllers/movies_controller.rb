@@ -26,6 +26,10 @@ class MoviesController < ApplicationController
   end
 
   def reservation
+    if params[:schedule_id].blank? || params[:date].blank?
+      redirect_to movie_show_path(params[:id]), alert: "スケジュールと日付を選択してください"
+      return
+    end
     @movie = Movie.find(params[:id])
     @schedule = @movie.schedules.find(params[:schedule_id])
     @seats = Seat.all

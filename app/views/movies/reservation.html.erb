@@ -20,7 +20,7 @@
             <%if seat.id == 1 or seat.id == 6 or seat.id == 11 then%>
                 <tr>
             <%end%>
-                <td>|<a href="/movies/<%=@movie.id%>/schedules/<%=@schedule.id%>/reservation/<%=seat.id%>/new"><%=seat.row%>-<%=seat.column%>|</td>
+                <td>|<%= link_to "#{seat.row}-#{seat.column}", new_reservation_path(movie_id: @movie.id, schedule_id: @schedule.id, seat_id: seat.id, date: @date) %>|</td>
             <%if seat.id == 5 or seat.id == 10 or seat.id == 15 then%>
             </tr>
             <%end%>

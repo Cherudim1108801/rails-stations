@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
     def new
+        if params[:schedule_id].blank? || params[:seat_id].blank? || params[:date].blank?
+            redirect_to movie_reservation_path(params[:movie_id]), alert: "スケジュール、座席、日付を選択してください"
+            return
+        end 
         @movie = params[:movie_id] ? Movie.find(params[:movie_id]) : nil
         @schedule = params[:schedule_id] ? Schedule.find(params[:schedule_id]) : nil
         @seat = params[:seat_id] ? Seat.find(params[:seat_id]) : nil
