@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_09_21_081615) do
+ActiveRecord::Schema[7.1].define(version: 2026_09_25_042424) do
+  create_table "RECOVER_YOUR_DATA_info", id: false, charset: "utf8mb3", force: :cascade do |t|
+    t.text "READ_ME"
+  end
+
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 160, null: false, comment: "映画のタイトル。邦題・洋題は一旦考えなくてOK"
     t.string "year", limit: 45, comment: "公開年"
@@ -20,6 +24,19 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_21_081615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_movies_on_name"
+  end
+
+  create_table "reservations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "date", comment: "予約日"
+    t.bigint "schedule_id"
+    t.bigint "seat_id"
+    t.string "email", comment: "予約者メールアドレス"
+    t.string "name", limit: 50, comment: "予約者名"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["date", "schedule_id", "seat_id"], name: "reservation_schedule_seat_unique", unique: true
+    t.index ["schedule_id"], name: "index_reservations_on_schedule_id"
+    t.index ["seat_id"], name: "index_reservations_on_seat_id"
   end
 
   create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -36,5 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_21_081615) do
     t.string "row", limit: 1, null: false, comment: "座席行アルファベット"
   end
 
+  add_foreign_key "reservations", "schedules"
+  add_foreign_key "reservations", "seats"
   add_foreign_key "schedules", "movies"
 end

@@ -19,3 +19,11 @@
         </ul>
     <% end %>
 </div>
+
+<div>
+    <%= form_with date: @date, url: movie_reservation_path(@movie), method: :get do |form| %>
+        <%= form.label :date, "日付" %><%= form.date_field :date, min: Date.today, max: Date.today + 7, value: @date %><br>
+        <%= form.label :schedule_id, "上映時刻" %><%= form.select :schedule_id, @movie.schedules.map { |s| [s.start_time.strftime("%H:%M"), s.id] } %>
+        <%= form.submit "座席を予約する" %>
+    <% end %>
+</div>
