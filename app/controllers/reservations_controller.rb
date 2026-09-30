@@ -13,6 +13,11 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.new(reservation_params)
+        @reserved = Reservation.where(schedule_id: @reservation.schedule_id, seat_id: @reservation.seat_id, date: @reservation.date)
+        if @reserved.exists?
+            redirect_to movie_reservation_path(id: params.dig(:reservation, :movie_id), schedule_id: @reservation.schedule_id, date: params.dig(:reservation, :date)), alert: "この座席はすでに予約されています。"
+            return
+        end
 
         if @reservation.save
             redirect_to "/movies/#{params.dig(:reservation, :movie_id)}/"

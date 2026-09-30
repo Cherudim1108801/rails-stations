@@ -1,5 +1,8 @@
-<title>上映映画座席表</title>
-<meta charset="UTF-8">
+<style>
+    td.reserved {
+        background-color: gray;
+    }
+</style>
 <div>
     <title>座席一覧</title>
 <meta charset="UTF-8">
@@ -20,7 +23,11 @@
             <%if seat.id == 1 or seat.id == 6 or seat.id == 11 then%>
                 <tr>
             <%end%>
-                <td>|<%= link_to "#{seat.row}-#{seat.column}", new_reservation_path(movie_id: @movie.id, schedule_id: @schedule.id, seat_id: seat.id, date: @date) %>|</td>
+                <% if @non_reserved_seats.include?(seat) then %>
+                    <td>|<%= link_to "#{seat.row}-#{seat.column}", new_reservation_path(movie_id: @movie.id, schedule_id: @schedule.id, seat_id: seat.id, date: @date) %>|</td>
+                <% else %>
+                    <td class="reserved"> | <%= "#{seat.row}-#{seat.column}" %> |</td>
+                <% end %>
             <%if seat.id == 5 or seat.id == 10 or seat.id == 15 then%>
             </tr>
             <%end%>

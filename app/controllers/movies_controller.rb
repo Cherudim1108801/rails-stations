@@ -32,6 +32,10 @@ class MoviesController < ApplicationController
     end
     @movie = Movie.find(params[:id])
     @schedule = @movie.schedules.find(params[:schedule_id])
+    result = SeatReserveMatch.new(@schedule, params[:date], Seat.all).call
+    @reserved_seats = result.reserved
+    @non_reserved_seats = result.non_reserved
+    #表示用に使用し、各カラムの値は@reserved_seatsと@non_reserved_seatsから取得する
     @seats = Seat.all
     @date = params[:date] || Date.today.to_s
   end
